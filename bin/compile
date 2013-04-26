@@ -22,7 +22,7 @@ OCI8_DIR="#{ARGV[0]}/vendor/oci8"
 OCI8_SO_DIR="#{ARGV[0]}/vendor/ruby-1.9.3/" 
 
 ORACLE_INSTANT_CLIENT_DIR="#{ARGV[0]}/vendor/oracle_instantclient"
-
+puts "oci folder is: #{ORACLE_INSTANT_CLIENT_DIR}"
 indent "Making folders..."
 `mkdir -p #{OCI8_SO_DIR}`
 `mkdir -p #{OCI8_DIR}`
