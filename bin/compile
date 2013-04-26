@@ -45,7 +45,8 @@ end
 
 
 
-
+puts "setting LD_LIBRARY_PATH"
+ENV["LD_LIBRARY_PATH"] = ORACLE_INSTANT_CLIENT_DIR
 indent "Done."
 
 
