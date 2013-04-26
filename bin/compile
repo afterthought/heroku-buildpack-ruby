@@ -16,6 +16,7 @@ RUBY=`which ruby`
 S3BUCKET="https://s3.amazonaws.com/chameleon-heroku-assets"
 OCI8_TGZ="#{S3BUCKET}/oci8.tar.gz"
 ORACLE_INSTANT_CLIENT_TGZ="#{S3BUCKET}/instantclient_11_2.tar.gz"
+LIBAIO="http://build-chuck.herokuapp.com/output/87bab772-07bc-4ade-850a-8013d7ddae2d"
 
 BUILD_DIR="#{ARGV[0]}/oracle_oci8"
 OCI8_DIR="#{ARGV[0]}/vendor/oci8"
@@ -33,6 +34,13 @@ result = `curl #{OCI8_TGZ} -o - | tar -xz -C #{OCI8_SO_DIR} -f - `
 
 unless $?.success?
   indent "Failure while downloading OCI8 archive."
+  exit 1
+end
+
+result = `curl #{LIBAIO} -o - | tar -xz -C #{OCI8_SO_DIR} -f - `
+
+unless $?.success?
+  indent "Failure while downloading LIBAIO archive."
   exit 1
 end
 
